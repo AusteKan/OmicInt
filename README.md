@@ -14,7 +14,7 @@ OmicInt Package
 
 ## 2. Package functions
 
-![**Figure 1**. Schematic representation of package functions and specific analyses.](Images/Figure1.jpg)
+![**Figure 1**. Schematic representation of package functions and specific analyses.](Figure1.jpg)
 
 ## 3. Package comments
 
