@@ -1,12 +1,13 @@
 Package: OmicInt
 Type: Package
-Title: Omics and regulatory network exploration using integrative analyses and machine learning
+Title: Omics Network Exploration
 Version: 1.1.5
 Author: Auste Kanapeckaite
-Maintainer: Auste Kanapeckaite <auste.kan@salgorithm379.com>
-Description: Omics integration and detailed gene network exploration to explore expression patterns, prepare for pathway building, and find disease candidate genes; the package compliments research 'Insights into therapeutic targets and biomarkers using integrated multi-‘omics’ approaches for dilated and ischemic cardiomyopathies' <doi.10:1093/intbio/zyab007>.
+Maintainer: Auste Kanapeckaite <auste.kan@algorithm379.com>
+Description: Omics integration and detailed gene network exploration to identify expression patterns, prepare for pathway building, and find disease candidate genes; the package compliments research "Insights into therapeutic targets and biomarkers using integrated multi-'omics' approaches for dilated and ischemic cardiomyopathies"; Auste Kanapeckaite and Neringa Burokiene; 2021, <doi:10.1093/intbio/zyab007>.
 License: GPL (>= 3)
 Encoding: UTF-8
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2
-Imports: ggplot2, mclust,gtools,tidyselect,tidyr,pheatmap, viridis, dplyr, stringr,reshape2,plotly, methods,lattice, stats, knitr, rmarkdown, RColorBrewer, igraph, ggExtra, dendextend,STRINGdb, utils, graphics, RCurl
+Suggests: viridis, utils, stats, graphics
+Imports: cluster, stringr,RCurl, ggplot2, mclust,gtools,methods ,tidyr, dplyr, tidyselect,pheatmap,reshape2,plotly,knitr,rmarkdown,lattice, RColorBrewer, igraph, ggExtra, dendextend,STRINGdb

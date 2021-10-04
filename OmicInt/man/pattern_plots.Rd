@@ -4,26 +4,29 @@
 \alias{pattern_plots}
 \title{pattern_plots}
 \usage{
-pattern_plots(data, meta, low = NA, high = NA)
+pattern_plots(data, meta, low = NA, high = NA, Condition = "Condition_1")
 }
 \arguments{
-\item{data}{Requires a  data frame of normalised scores subsetted from pattern_search function}
+\item{data}{Requires a  data frame of normalised scores subsetted from pattern_search function. Class - string}
 
-\item{meta}{Requires a  data frame of metadata  in CSV format}
+\item{meta}{Requires a  path variable to a data frame of metadata  in CSV format. Class - string}
 
-\item{low}{the lowest value for the expression value}
+\item{low}{the lowest value for the expression value; class - integer or float}
 
-\item{high}{the highest value for the expression value}
+\item{high}{the highest value for the expression value; class -integer or float}
+
+\item{Condition}{Requires a condition  name to select if there are multiple conditions in meta data file, default "Condition_1". Conditions need to match between pattern_search and pattern_plot functions.Class - string}
 }
 \value{
-multiple plots
+function plots multiple plots, class - plots
 }
 \description{
 pattern_plots function uses a subsetted pattern data from the function pattern_search. The function plots distribution plots as well as a selected set of genes and how they changed patterns.
 }
 \examples{
-path_to_test_data<- system.file("extdata", "normalised_counts.csv", package="OmicInt")
-path_to_meta_data<- system.file("extdata", "metadata.csv", package="OmicInt")
+\dontrun{
+path_to_test_data<- system.file("extdata","subsetted_data.csv", package="OmicInt")
+path_to_meta_data<- system.file("extdata", "meta_data.csv", package="OmicInt")
 # basic usage of pattern_search
-pattern_search(path_to_test_data,path_to_meta_data)
+pattern_plots(path_to_test_data,path_to_meta_data, 20, 10000)}
 }

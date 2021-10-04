@@ -1,34 +1,36 @@
 #' @title interactor_map
 #'
-#' @description interactor_map uses information mined from STRING database to map  experimental, predicted,  or referenced interactions  to see if there are  any interactors in the set of significantly changed genes and how they are linked.
+#' @description interactor_map uses information mined from STRING database to map  experimental, predicted,  or referenced interactions  to see if there are  any interactors in the set of significantly changed genes and how they are linked. The function requires a data frame prepared by score_genes. The output is a plot depicting interaction map.
 #'
-#' @param data requires a data frame containing gene names as row names and a column with LFC values.
-#' @return interaction map
+#' @param data requires a data frame containing gene names as row names and a column with LFC values; class - data frame
+#' @return interaction map/plot; class - plot
 #'
 #' @importFrom igraph graph_from_adjacency_matrix degree delete.vertices
 #' @Import STRINGdb
 #' @import RColorBrewer
 #' @importFrom  dendextend find_k
 #' @importFrom  dendextend color_labels
-#' @importFrom  dendextend  color_branches
-#' @importFrom  dendextend   colored_bars
+#' @importFrom  dendextend color_branches
+#' @importFrom  dendextend colored_bars
+#' @import cluster
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 theme
 #' @ImpportFrom ggplot2 element_text
 #' @ImportFrom ggplot2 geom_col
 #' @ImportFrom ggplot2 ggplot
 #' @import RColorBrewer
-#' @importFrom  graphics par
 #' @importFrom graphics legend
 #' @import utils
 #' @importFrom stats  hclust
 #' @importFrom stats as.dendrogram
 #' @importFrom  RCurl getURL
 #' @examples
+#'  \dontrun{
 #' path_to_test_data<- system.file("extdata", "test_data.tabular", package="OmicInt")
 #' # basic usage of interactor_map
 #' df<-utils::read.table(path_to_test_data)
 #' interactor_map(df)
+#' }
 #' @export
 interactor_map<-function(data){
 

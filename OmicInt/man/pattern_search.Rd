@@ -7,21 +7,22 @@
 pattern_search(data, meta, Condition = "Condition_1")
 }
 \arguments{
-\item{data}{Requires a  data frame of normalised scores in CSV format}
+\item{data}{Requires a path variable to a data frame of normalised scores in CSV format; class - string}
 
-\item{meta}{Requires a  data frame of metadata  in CSV format}
+\item{meta}{Requires a path variable to a data frame of metadata  in CSV format; class - string}
 
-\item{Condition}{Requires a condition to select if multiple, default "Condition_1"}
+\item{Condition}{Requires a condition  name to select if there are multiple conditions in meta data file, default "Condition_1"; class - string}
 }
 \value{
-pattern list
+a list variable which contains a pattern list with pattern names and associated genes; class - list
 }
 \description{
-pattern_search function searches for gene patterns that were upregulated or downregulated throughout the conditions when comparing to the geometric mean across all conditions. The geometric mean serves as a base value to compare across multiple conditions if more complex patterns exist and also allows for a universal baseline.
+pattern_search function searches for gene patterns that were upregulated or downregulated throughout the conditions when comparing to the geometric mean across all conditions. The geometric mean serves as a base value to compare across multiple conditions if more complex patterns exist and also allows for a universal baseline. Function takes path variables to  data frames for normalised gene counts and meta data file (CSV format) as well as an additional variable that describes the name of a column that contains the condition under the investigation.
 }
 \examples{
+\dontrun{
 path_to_test_data<- system.file("extdata", "normalised_counts.csv", package="OmicInt")
-path_to_meta_data<- system.file("extdata", "metadata.csv", package="OmicInt")
+path_to_meta_data<- system.file("extdata", "meta_data.csv", package="OmicInt")
 # basic usage of pattern_search
-pattern_search(path_to_test_data,path_to_meta_data)
+pattern_search(path_to_test_data,path_to_meta_data)}
 }

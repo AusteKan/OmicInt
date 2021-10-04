@@ -7,17 +7,19 @@
 cluster_heatmap(data)
 }
 \arguments{
-\item{data}{requires a data frame containing gene names as row names and a column with LFC values.}
+\item{data}{requires a data frame containing gene names as row names and a column with LFC values. Class - data frame}
 }
 \value{
-heatmap
+heatmap; class - plot
 }
 \description{
 cluster_heatmap uses information mined from STRING database to map experimental, referenced, and inferred interactions to see if there are any interactors in the set of significantly changed genes. This heatmap provides clustered visualisation of all genes and the genes that have shared interactions.
 }
 \examples{
+ \dontrun{
 path_to_test_data<- system.file("extdata", "test_data.tabular", package="OmicInt")
 # basic usage of cluster_heatmap
 df<-utils::read.table(path_to_test_data)
-#cluster_heatmap(df)
+cluster_heatmap(df)
+}
 }

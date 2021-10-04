@@ -13,26 +13,28 @@ cluster_links(
 )
 }
 \arguments{
-\item{data}{data frame containing processed expression file from score_genes with LFCscore}
+\item{data}{data frame containing processed expression file from score_genes with LFCscore; Class - data frame}
 
-\item{max_range}{number of clusters to consider during model selection; default 20 clusters}
+\item{max_range}{number of clusters to consider during model selection; default 20 clusters. Class - integer}
 
-\item{type}{type of score to consider which can be either "association" or "specificity"; default "association"}
+\item{type}{type of score to consider which can be either "association" or "specificity"; default "association". Class - string}
 
-\item{clusters}{number of clusters to test not based on the best BIC output, user also needs to supply modelNames}
+\item{clusters}{number of clusters to test not based on the best BIC output, user also needs to supply modelNames; class - integer}
 
-\item{modelNames}{can only be supplied when clusters are also specified, this option will model based on the user parameters}
+\item{modelNames}{can only be supplied when clusters are also specified, this option will model based on the user parameters; class- string}
 }
 \value{
-A data frame object that contains a summary of clusters
+A data frame object that contains a summary of clusters; class - data frame
 }
 \description{
 Function to select an optimal number of clusters and a model to be fitted during the EM phase of clustering for Gaussian Mixture Models. The function provides summaries and helps to visualise  gene clusters based on generated data using score_genes function. Weighed gene expression is clustered based on a specific disease score which can be either the association or specificity for a disease, i.e., if the gene has known links to disease phenotypes or how specific it is when describing a pathology. The function also provides scatter plots and dimension reduction plots to analyse the clusters and features in the experimental data.
 }
 \examples{
-path_to_test_data<- system.file("extdata", "test_scores.tabular", package="OmicInt")
+ \dontrun{
+path_to_test_data<- system.file("extdata", "test_data.tabular", package="OmicInt")
 # basic usage of cluster_links
 df<-utils::read.table(path_to_test_data)
 df<-cluster_links(df)
 head(df)
+}
 }

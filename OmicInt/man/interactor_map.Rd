@@ -7,17 +7,19 @@
 interactor_map(data)
 }
 \arguments{
-\item{data}{requires a data frame containing gene names as row names and a column with LFC values.}
+\item{data}{requires a data frame containing gene names as row names and a column with LFC values; class - data frame}
 }
 \value{
-interaction map
+interaction map/plot; class - plot
 }
 \description{
-interactor_map uses information mined from STRING database to map  experimental, predicted,  or referenced interactions  to see if there are  any interactors in the set of significantly changed genes and how they are linked.
+interactor_map uses information mined from STRING database to map  experimental, predicted,  or referenced interactions  to see if there are  any interactors in the set of significantly changed genes and how they are linked. The function requires a data frame prepared by score_genes. The output is a plot depicting interaction map.
 }
 \examples{
+ \dontrun{
 path_to_test_data<- system.file("extdata", "test_data.tabular", package="OmicInt")
 # basic usage of interactor_map
 df<-utils::read.table(path_to_test_data)
 interactor_map(df)
+}
 }

@@ -2,11 +2,12 @@
 
 #' @description pattern_plots function uses a subsetted pattern data from the function pattern_search. The function plots distribution plots as well as a selected set of genes and how they changed patterns.
 #'
-#' @param data Requires a  data frame of normalised scores subsetted from pattern_search function
-#' @param meta Requires a  data frame of metadata  in CSV format
-#' @param low the lowest value for the expression value
-#' @param high the highest value for the expression value
-#' @return  multiple plots
+#' @param data Requires a  data frame of normalised scores subsetted from pattern_search function. Class - string
+#' @param meta Requires a  path variable to a data frame of metadata  in CSV format. Class - string
+#' @param Condition Requires a condition  name to select if there are multiple conditions in meta data file, default "Condition_1". Conditions need to match between pattern_search and pattern_plot functions.Class - string
+#' @param low the lowest value for the expression value; class - integer or float
+#' @param high the highest value for the expression value; class -integer or float
+#' @return  function plots multiple plots, class - plots
 #' @import RColorBrewer
 #' @importFrom reshape2 melt
 #' @importFrom dplyr group_by
@@ -25,12 +26,13 @@
 #' @import methods
 #' @import utils
 #' @examples
-#' path_to_test_data<- system.file("extdata", "normalised_counts.csv", package="OmicInt")
-#' path_to_meta_data<- system.file("extdata", "metadata.csv", package="OmicInt")
+#' \dontrun{
+#' path_to_test_data<- system.file("extdata","subsetted_data.csv", package="OmicInt")
+#' path_to_meta_data<- system.file("extdata", "meta_data.csv", package="OmicInt")
 #' # basic usage of pattern_search
-#' pattern_search(path_to_test_data,path_to_meta_data)
+#' pattern_plots(path_to_test_data,path_to_meta_data, 20, 10000)}
 #' @export
-pattern_plots<-function(data, meta, low=NA,high=NA){
+pattern_plots<-function(data, meta, low=NA,high=NA, Condition="Condition_1"){
 
 
   if((is.na(low))||(is.na(high))){stop("You need to supply low an d high parameters for plotting")}
@@ -38,11 +40,12 @@ pattern_plots<-function(data, meta, low=NA,high=NA){
   #access data and select data
 
   meta<-utils::read.csv(meta, header=TRUE)
+  meta<-meta[,c("Sample_ID",Condition)]
   colnames(meta)<-c("Sample_ID","Condition")
 
   data_temp<-data
   rownames(data_temp)<-data$"Symbol"
-  data_temp<-data_temp[,-1]
+  data_temp<-data_temp[meta$"Sample_ID"]
 
   data_temp$"Mean"<-apply(data_temp,1,mean)
   data_temp<-data_temp[data_temp$"Mean">=low,]

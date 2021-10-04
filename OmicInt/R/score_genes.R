@@ -1,20 +1,21 @@
 #' @title score_genes
 #'
-#' @description Function collects data from STRINGDB and disease association databases to  scale as well as prepare additional score integration.
+#' @description Function collects data from STRINGDB and disease association databases to  scale as well as prepare additional score integration. Function returns a data frame with calculated scores for downstream analyses.
 #'
-#' @param data requires a data frame containing gene names as row names and a column with LFC values in csv format (comma separated).
-#' @param alpha default value returns "association" which gives a score from 0 to 1 based on how strongly the gene is associated with a disease or pathological phenotype; other options are "specificity" - to give values based on how specific the gene is for a given disease and "geometric" - to give a geometric score of both association and specificity.
-#' @param beta default  FALSE; if TRUE, please supply data with column beta that contains information on gene associations from single cell studies
-#' @param gamma default FALSE; if TRUE, please supply data with column gamma that contains information on gene associations from proteome studies
-#' @return  data frame for the downstream analyses
+#' @param data requires a path variable to CSV file containing gene names as row names and a column with LFC values in csv format (comma separated). Columns must contain values: 'Symbol', "log2FoldChange", and 'pvalue'. Class - data frame
+#' @param alpha default value returns "association" which gives a score from 0 to 1 based on how strongly the gene is associated with a disease or pathological phenotype; other options are "specificity" - to give values based on how specific the gene is for a given disease and "geometric" - to give a geometric score of both association and specificity. Class - string
+#' @param beta default  FALSE; if TRUE, please supply data with column beta that contains information on gene associations from single cell studies. Class - string
+#' @param gamma default FALSE; if TRUE, please supply data with column gamma that contains information on gene associations from proteome studies. Class - string
+#' @return a data frame with  calculated score values for the downstream analyses; class - data frame
 #'
 #' @importFrom  RCurl getURL
 #' @import utils
 #' @examples
+#' \dontrun{
 #' path_to_test_data<- system.file("extdata", "data.csv", package="OmicInt")
-#' # basic usage of score_genes
+#' #basic usage of score_genes function
 #' df<-score_genes(path_to_test_data)
-#' head(df)
+#' head(df)}
 #' @export
 score_genes<-function(data, alpha="association",beta=FALSE, gamma=FALSE){
 

@@ -1,10 +1,10 @@
 #' @title HK_genes
 
-#' @description HK_genes function provides a way to visualise how housekeeping genes changed throughout the conditions under the investigation. Depending on the number of conditions separate plots will be generated.
+#' @description HK_genes function provides a way to visualise how housekeeping genes changed throughout the conditions under the investigation. Depending on the number of conditions separate plots will be generated. Function requires a path variable to a normalised count data file.
 #'
-#' @param data Requires a  data frame of normalised scores in CSV format
-#' @param meta Requires a  data frame of metadata  in CSV format
-#' @return  multiple plots
+#' @param data Requires a path variable to a data file of normalised scores in CSV format (comma separated); class - string
+#' @param meta Requires a path variable to a data file of metadata  in CSV format (comma separated); class - string
+#' @return  multiple plots; class - plots
 #' @importFrom reshape2 melt
 #' @importFrom dplyr group_by_at
 #' @importFrom dplyr ungroup
@@ -20,10 +20,11 @@
 #' @import methods
 #' @import utils
 #' @examples
+#' \dontrun{
 #' path_to_test_data<- system.file("extdata", "normalised_counts.csv", package="OmicInt")
-#' path_to_meta_data<- system.file("extdata", "metadata.csv", package="OmicInt")
+#' path_to_meta_data<- system.file("extdata", "meta_data.csv", package="OmicInt")
 #' # basic usage of HK_genes
-#' HK_genes(path_to_test_data,path_to_meta_data)
+#' HK_genes(path_to_test_data,path_to_meta_data)}
 #' @export
 HK_genes<-function(data, meta){
 
