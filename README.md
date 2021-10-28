@@ -23,7 +23,7 @@ The package has the following dependencies: ggplot2,mclust,gtools,tidyr,pheatmap
 
 Please note that plotly is used to build interactive plots which will appear on the Viewer tab in RStudio.
 
-Version: v1.1.5
+Version: v1.1.7
 
 Github pages: https://github.com/Algorithm379/Packages/ and https://github.com/AusteKan/OmicInt
 
